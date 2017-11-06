@@ -1,0 +1,35 @@
+h1= title
+p Pagina de {{users.title}}
+a.btn.btn-success(ng-href="#!users/add") Agregar
+
+.users
+  table.table.table-striped
+    thead
+      tr
+        th Nombre
+        th Email
+        th Role
+        th.text-right Actions
+    tbody
+      tr(ng-repeat="user in users.users")
+        td {{user.name}}
+        td {{user.email}}
+        td {{user.role == 'ROLE_ADMIN' ? 'ADMIN' : 'USER'}}
+        td.actions.text-right
+          button.btn.btn-sm.btn-info(ng-click="users.getInfo(user)") Ver 
+          a.btn.btn-sm.btn-primary(ng-href="#!users/view/{{user._id}}") Ver detalle 
+          a.btn.btn-sm.btn-warning(ng-href="#!users/edit/{{user._id}}") Editar 
+          button.btn.btn-sm.btn-danger(ng-click="users.deleteUser(user._id)") Borrar
+
+.panel.panel-primary.user-info(ng-if="users.userInfo")
+  .panel-heading {{users.userInfo.name}}
+  .panel-body
+    .form-group
+      label Nombre: 
+      p {{users.userInfo.name}}
+    .form-group
+      label Email: 
+      p {{users.userInfo.email}}
+    .form-group
+      label Role: 
+      p {{users.userInfo.role == 'ROLE_ADMIN' ? 'ADMIN' : 'USER'}}

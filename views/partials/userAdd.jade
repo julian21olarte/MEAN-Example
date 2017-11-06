@@ -1,0 +1,23 @@
+h1.text-success {{user.title}}
+p Agregar nuevo usuario
+
+.row
+  .col-md-6
+    .user-info.panel.panel-success
+      .panel-body
+        form#formAddUser
+          .form-group
+            label Nombre:  
+            input.form-control(type="text", placeholder="Nombre" ng-model="user.name")
+          .form-group
+            label  Email:
+            input.form-control(type="email", placeholder="E-mail", ng-model="user.email")
+          .form-group
+            label  Password:
+            input.form-control(type="password", placeholder="Contraseña", ng-model="user.pass")
+          .form-group
+            label(for="user_role") Role:
+            select.form-control#user_role(ng-model="user.role")
+              option(ng-repeat="option in user.role_options", value="{{option.value}}") {{option.name}}
+        .panel-footer.clearfix
+          button.btn.btn-success.pull-right(type="button", ng-click="user.saveUser()") Guardar

@@ -1,0 +1,17 @@
+h1 {{user.title}}
+p Detalle de {{user.userInfo.name}}
+
+
+
+.panel.panel-primary.user-info(ng-if="user.userInfo")
+  .panel-heading {{user.userInfo.name}}
+  .panel-body
+    .form-group
+      label Nombre: 
+      p {{user.userInfo.name}}
+    .form-group
+      label Email: 
+      p {{user.userInfo.email}}
+    .form-group
+      label Role: 
+      p {{user.userInfo.role == 'ROLE_ADMIN' ? 'ADMIN' : 'USER'}}
